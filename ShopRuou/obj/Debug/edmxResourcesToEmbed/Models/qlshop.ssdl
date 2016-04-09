@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLShopRuouModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="loaiSP">
+    <Key>
+      <PropertyRef Name="maloaiSP" />
+    </Key>
+    <Property Name="maloaiSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenloaiSP" Type="nvarchar" MaxLength="50" />
+    <Property Name="maTT" Type="int" />
+  </EntityType>
+  <EntityType Name="nhasanxuat">
+    <Key>
+      <PropertyRef Name="maNSX" />
+    </Key>
+    <Property Name="maNSX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenNSX" Type="nvarchar" MaxLength="50" />
+    <Property Name="maTT" Type="int" />
+  </EntityType>
+  <EntityType Name="tinhtrang">
+    <Key>
+      <PropertyRef Name="maTT" />
+    </Key>
+    <Property Name="maTT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tinhtrang" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <Association Name="LSP_TT">
+    <End Role="tinhtrang" Type="Self.tinhtrang" Multiplicity="0..1" />
+    <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tinhtrang">
+        <PropertyRef Name="maTT" />
+      </Principal>
+      <Dependent Role="loaiSP">
+        <PropertyRef Name="maTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NSX_TT">
+    <End Role="tinhtrang" Type="Self.tinhtrang" Multiplicity="0..1" />
+    <End Role="nhasanxuat" Type="Self.nhasanxuat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tinhtrang">
+        <PropertyRef Name="maTT" />
+      </Principal>
+      <Dependent Role="nhasanxuat">
+        <PropertyRef Name="maTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLShopRuouModelStoreContainer">
+    <EntitySet Name="loaiSP" EntityType="Self.loaiSP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nhasanxuat" EntityType="Self.nhasanxuat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tinhtrang" EntityType="Self.tinhtrang" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="LSP_TT" Association="Self.LSP_TT">
+      <End Role="tinhtrang" EntitySet="tinhtrang" />
+      <End Role="loaiSP" EntitySet="loaiSP" />
+    </AssociationSet>
+    <AssociationSet Name="NSX_TT" Association="Self.NSX_TT">
+      <End Role="tinhtrang" EntitySet="tinhtrang" />
+      <End Role="nhasanxuat" EntitySet="nhasanxuat" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

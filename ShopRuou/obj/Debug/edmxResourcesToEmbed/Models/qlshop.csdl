@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLShopRuouModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="loaiSP">
+    <Key>
+      <PropertyRef Name="maloaiSP" />
+    </Key>
+    <Property Name="maloaiSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tenloaiSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="maTT" Type="Int32" />
+    <NavigationProperty Name="tinhtrang" Relationship="Self.LSP_TT" FromRole="loaiSP" ToRole="tinhtrang" />
+  </EntityType>
+  <EntityType Name="nhasanxuat">
+    <Key>
+      <PropertyRef Name="maNSX" />
+    </Key>
+    <Property Name="maNSX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tenNSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="maTT" Type="Int32" />
+    <NavigationProperty Name="tinhtrang" Relationship="Self.NSX_TT" FromRole="nhasanxuat" ToRole="tinhtrang" />
+  </EntityType>
+  <EntityType Name="tinhtrang">
+    <Key>
+      <PropertyRef Name="maTT" />
+    </Key>
+    <Property Name="maTT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tinhtrang1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="loaiSPs" Relationship="Self.LSP_TT" FromRole="tinhtrang" ToRole="loaiSP" />
+    <NavigationProperty Name="nhasanxuats" Relationship="Self.NSX_TT" FromRole="tinhtrang" ToRole="nhasanxuat" />
+  </EntityType>
+  <Association Name="LSP_TT">
+    <End Role="tinhtrang" Type="Self.tinhtrang" Multiplicity="0..1" />
+    <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tinhtrang">
+        <PropertyRef Name="maTT" />
+      </Principal>
+      <Dependent Role="loaiSP">
+        <PropertyRef Name="maTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NSX_TT">
+    <End Role="tinhtrang" Type="Self.tinhtrang" Multiplicity="0..1" />
+    <End Role="nhasanxuat" Type="Self.nhasanxuat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tinhtrang">
+        <PropertyRef Name="maTT" />
+      </Principal>
+      <Dependent Role="nhasanxuat">
+        <PropertyRef Name="maTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLShopRuouEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="loaiSPs" EntityType="Self.loaiSP" />
+    <EntitySet Name="nhasanxuats" EntityType="Self.nhasanxuat" />
+    <EntitySet Name="tinhtrangs" EntityType="Self.tinhtrang" />
+    <AssociationSet Name="LSP_TT" Association="Self.LSP_TT">
+      <End Role="tinhtrang" EntitySet="tinhtrangs" />
+      <End Role="loaiSP" EntitySet="loaiSPs" />
+    </AssociationSet>
+    <AssociationSet Name="NSX_TT" Association="Self.NSX_TT">
+      <End Role="tinhtrang" EntitySet="tinhtrangs" />
+      <End Role="nhasanxuat" EntitySet="nhasanxuats" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

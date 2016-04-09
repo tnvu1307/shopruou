@@ -1,0 +1,8 @@
+﻿@using ShopRuou.Models
+
+@model List<loaiSP>
+
+@foreach (loaiSP c in Model)
+{
+    <li><a href="#"><i class="fa fa-angle-right"></i> @c.tenloaiSP </a></li>
+}

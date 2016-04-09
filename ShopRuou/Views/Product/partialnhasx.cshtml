@@ -1,0 +1,8 @@
+﻿@using ShopRuou.Models
+
+@model List<nhasanxuat>
+
+@foreach (nhasanxuat c in Model)
+{
+    <li><a href="#"><i class="fa fa-angle-right"></i> @c.tenNSX </a></li>
+}

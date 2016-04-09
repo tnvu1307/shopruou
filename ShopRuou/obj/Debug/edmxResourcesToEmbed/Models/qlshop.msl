@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLShopRuouModelStoreContainer" CdmEntityContainer="QLShopRuouEntities1">
+    <EntitySetMapping Name="loaiSPs">
+      <EntityTypeMapping TypeName="QLShopRuouModel.loaiSP">
+        <MappingFragment StoreEntitySet="loaiSP">
+          <ScalarProperty Name="maloaiSP" ColumnName="maloaiSP" />
+          <ScalarProperty Name="tenloaiSP" ColumnName="tenloaiSP" />
+          <ScalarProperty Name="maTT" ColumnName="maTT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nhasanxuats">
+      <EntityTypeMapping TypeName="QLShopRuouModel.nhasanxuat">
+        <MappingFragment StoreEntitySet="nhasanxuat">
+          <ScalarProperty Name="maNSX" ColumnName="maNSX" />
+          <ScalarProperty Name="tenNSX" ColumnName="tenNSX" />
+          <ScalarProperty Name="maTT" ColumnName="maTT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tinhtrangs">
+      <EntityTypeMapping TypeName="QLShopRuouModel.tinhtrang">
+        <MappingFragment StoreEntitySet="tinhtrang">
+          <ScalarProperty Name="maTT" ColumnName="maTT" />
+          <ScalarProperty Name="tinhtrang1" ColumnName="tinhtrang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

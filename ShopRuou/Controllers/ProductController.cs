@@ -14,6 +14,7 @@ namespace ShopRuou.Controllers
             return View();
         }
 
+
         public ActionResult partialnhaSX()
         {
             using (var ctx = new QLShopRuouEntities1())

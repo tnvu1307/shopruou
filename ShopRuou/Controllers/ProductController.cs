@@ -14,6 +14,7 @@ namespace ShopRuou.Controllers
             return View();
         }
 
+<<<<<<< HEAD
         public ActionResult SanPhamNSX(int? maNSX)
         {
             if(maNSX.HasValue == false)
@@ -30,6 +31,8 @@ namespace ShopRuou.Controllers
                 return View(list);
             }
         }
+=======
+>>>>>>> origin/master
 
         public ActionResult partialnhaSX()
         {

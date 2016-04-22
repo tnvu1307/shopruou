@@ -4,5 +4,5 @@
 
 @foreach (loaiSP c in Model)
 {
-    <li><a href="#"><i class="fa fa-angle-right"></i> @c.tenloaiSP </a></li>
+<p><a href="@Url.Action("SanPhamDM","Category",new{maloaiSP = c.maloaiSP})"><i class="fa fa-angle-right"></i> @c.tenloaiSP </a></p>
 }

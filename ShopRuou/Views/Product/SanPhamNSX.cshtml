@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "SanPhamNSX";
+}
+
+@section view_title{
+    Danh Sách Sản Phẩm
+}
+
+@using ShopRuou.Models
+@model List<chitietSP>
+
+@if(ViewBag.sl == 0)
+{
+    <p>No products</p>
+}
+else
+{
+<ul class="row">
+    @foreach(chitietSP sp in @Model)
+    { 
+    <li class="col-sm-6 col-md-6">
+        <div class="thumbnail">
+            <a href="#"><img style="height:150px" src="~/themes/images/products/@sp.hinhanh1" alt="" /></a>
+            <div class="caption">
+                <h5>@sp.tenSP</h5>
+                <p>
+                    Wares: @sp.xuatxu
+                </p>
+                <h4 style="text-align:center;">
+                    <a class="btn" href="#"><i class="fa fa-search-plus"></i></a>
+                    <a class="btn" href="#">Add to <i class="fa fa-shopping-basket"></i></a>
+                    <a class="btn" href="#">Price: @sp.giaban</a>
+                </h4>
+            </div>
+        </div>
+    </li>
+    }
+</ul>
+}
+

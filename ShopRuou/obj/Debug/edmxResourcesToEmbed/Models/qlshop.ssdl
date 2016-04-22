@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QLShopRuouModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="QLShopRuouModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="chitietSP">
+    <Key>
+      <PropertyRef Name="maSP" />
+    </Key>
+    <Property Name="maSP" Type="int" Nullable="false" />
+    <Property Name="tenSP" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="dungtich" Type="int" />
+    <Property Name="docol" Type="int" />
+    <Property Name="giaban" Type="int" Nullable="false" />
+    <Property Name="xuatxu" Type="nvarchar" MaxLength="50" />
+    <Property Name="chitiet" Type="nvarchar" MaxLength="1000" />
+    <Property Name="hinhanh1" Type="varchar" MaxLength="50" />
+    <Property Name="hinhanh2" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="loaiSP">
     <Key>
       <PropertyRef Name="maloaiSP" />
@@ -16,6 +30,19 @@
     <Property Name="tenNSX" Type="nvarchar" MaxLength="50" />
     <Property Name="maTT" Type="int" />
   </EntityType>
+  <EntityType Name="sanpham">
+    <Key>
+      <PropertyRef Name="maSP" />
+    </Key>
+    <Property Name="maSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="maloaiSP" Type="int" Nullable="false" />
+    <Property Name="maNSX" Type="int" Nullable="false" />
+    <Property Name="maTT" Type="int" Nullable="false" />
+    <Property Name="soluongton" Type="int" Nullable="false" />
+    <Property Name="soluongbanduoc" Type="int" Nullable="false" />
+    <Property Name="soluongxem" Type="int" Nullable="false" />
+    <Property Name="ngaynhap" Type="date" Nullable="false" />
+  </EntityType>
   <EntityType Name="tinhtrang">
     <Key>
       <PropertyRef Name="maTT" />
@@ -23,6 +50,54 @@
     <Property Name="maTT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tinhtrang" Type="nvarchar" MaxLength="30" />
   </EntityType>
+  <Association Name="FK__chitietSP__hinha__31EC6D26">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="chitietSP" Type="Self.chitietSP" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="maSP" />
+      </Principal>
+      <Dependent Role="chitietSP">
+        <PropertyRef Name="maSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sanpham__maNSX__2C3393D0">
+    <End Role="nhasanxuat" Type="Self.nhasanxuat" Multiplicity="1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nhasanxuat">
+        <PropertyRef Name="maNSX" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="maNSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sanpham__maTT__2D27B809">
+    <End Role="tinhtrang" Type="Self.tinhtrang" Multiplicity="1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tinhtrang">
+        <PropertyRef Name="maTT" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="maTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sanpham__ngaynha__2B3F6F97">
+    <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loaiSP">
+        <PropertyRef Name="maloaiSP" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="maloaiSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="LSP_TT">
     <End Role="tinhtrang" Type="Self.tinhtrang" Multiplicity="0..1" />
     <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="*" />
@@ -48,9 +123,27 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="QLShopRuouModelStoreContainer">
+    <EntitySet Name="chitietSP" EntityType="Self.chitietSP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="loaiSP" EntityType="Self.loaiSP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="nhasanxuat" EntityType="Self.nhasanxuat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sanpham" EntityType="Self.sanpham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tinhtrang" EntityType="Self.tinhtrang" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__chitietSP__hinha__31EC6D26" Association="Self.FK__chitietSP__hinha__31EC6D26">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="chitietSP" EntitySet="chitietSP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sanpham__maNSX__2C3393D0" Association="Self.FK__sanpham__maNSX__2C3393D0">
+      <End Role="nhasanxuat" EntitySet="nhasanxuat" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sanpham__maTT__2D27B809" Association="Self.FK__sanpham__maTT__2D27B809">
+      <End Role="tinhtrang" EntitySet="tinhtrang" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sanpham__ngaynha__2B3F6F97" Association="Self.FK__sanpham__ngaynha__2B3F6F97">
+      <End Role="loaiSP" EntitySet="loaiSP" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
     <AssociationSet Name="LSP_TT" Association="Self.LSP_TT">
       <End Role="tinhtrang" EntitySet="tinhtrang" />
       <End Role="loaiSP" EntitySet="loaiSP" />

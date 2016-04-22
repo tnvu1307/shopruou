@@ -14,9 +14,26 @@ namespace ShopRuou.Controllers
             return View();
         }
 
+        public ActionResult SanPhamNSX(int? maNSX)
+        {
+            if(maNSX.HasValue == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            using (var ctx = new QLShopRuouEntities())
+            {
+                List<chitietSP> list = ctx.chitietSPs.Where(c => c.sanpham.maNSX == maNSX).ToList();
+                if(list.Count == 0)
+                {
+                    ViewBag.sl = 0;
+                }
+                return View(list);
+            }
+        }
+
         public ActionResult partialnhaSX()
         {
-            using (var ctx = new QLShopRuouEntities1())
+            using (var ctx = new QLShopRuouEntities())
             {
                 List<nhasanxuat> list = ctx.nhasanxuats.OrderBy(c => c.tenNSX).ToList();
                 return PartialView(list);

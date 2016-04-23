@@ -14,29 +14,72 @@ namespace ShopRuou.Controllers
             return View();
         }
 
-        public ActionResult SanPhamNSX(int? maNSX)
+        public ActionResult SanPhamNSX(int? id, int curPage = 1)
         {
-            if(maNSX.HasValue == false)
+            if(id.HasValue == false)
             {
                 return RedirectToAction("Index", "Home");
             }
             using (var ctx = new QLShopRuouEntities())
             {
-                List<chitietSP> list = ctx.chitietSPs.Where(c => c.sanpham.maNSX == maNSX).ToList();
-                if(list.Count == 0)
+                List<chitietSP> list;
+                var query = ctx.chitietSPs.Where(c => c.sanpham.maNSX == id);
+                ViewBag.tenNSX = ctx.nhasanxuats.Where(c => c.maNSX == id).Select(c => c.tenNSX).FirstOrDefault();
+                //dem so luong trang
+                int n = query.Count();
+                int nPages = n / 4;
+                if (n % 4 > 0) nPages++;
+                ViewBag.nPages = nPages;
+                ViewBag.curPage = curPage;
+                ViewBag.nextPage = curPage + 1;
+                ViewBag.prevPage = curPage - 1;
+                if(n == 0)
                 {
                     ViewBag.sl = 0;
                 }
+                //
+                int nSkip = (curPage - 1)*4;
+                list = query.OrderBy(c=> c.maSP)
+                    .Skip(nSkip).Take(4)
+                    .ToList();
                 return View(list);
             }
         }
-        public ActionResult partialnhaSX()
+
+        public ActionResult SanPhamDM(int? id, int curPage = 1)
         {
+            if (id.HasValue == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             using (var ctx = new QLShopRuouEntities())
             {
-                List<nhasanxuat> list = ctx.nhasanxuats.OrderBy(c => c.tenNSX).ToList();
-                return PartialView(list);
+                List<chitietSP> list;
+                var query= ctx.chitietSPs.Where(c => c.sanpham.maloaiSP == id).ToList();
+                ViewBag.tenloaiSP = ctx.loaiSPs.Where(c => c.maloaiSP == id).Select(c => c.tenloaiSP).FirstOrDefault();
+                int n = query.Count();
+                int nPages = n / 4;
+                if (n % 4 > 0) nPages++;
+                ViewBag.nPages = nPages;
+                ViewBag.curPage = curPage;
+                ViewBag.nextPage = curPage + 1;
+                ViewBag.prevPage = curPage - 1;
+                if (n == 0)
+                {
+                    ViewBag.sl = 0;
+                }
+                int nSkip = (curPage - 1) * 4;
+                list = query.OrderBy(c => c.maSP)
+                    .Skip(nSkip).Take(4)
+                    .ToList();
+                return View(list);
             }
+        }
+
+        public ActionResult chitietSP(int? id)
+        {
+            ViewBag.maSP = id;
+            return View();
         }
     }
 }

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLShopRuouModelStoreContainer" CdmEntityContainer="QLShopRuouEntities">
+    <EntitySetMapping Name="chitietSPs">
+      <EntityTypeMapping TypeName="QLShopRuouModel.chitietSP">
+        <MappingFragment StoreEntitySet="chitietSP">
+          <ScalarProperty Name="maSP" ColumnName="maSP" />
+          <ScalarProperty Name="tenSP" ColumnName="tenSP" />
+          <ScalarProperty Name="dungtich" ColumnName="dungtich" />
+          <ScalarProperty Name="docol" ColumnName="docol" />
+          <ScalarProperty Name="giaban" ColumnName="giaban" />
+          <ScalarProperty Name="xuatxu" ColumnName="xuatxu" />
+          <ScalarProperty Name="chitiet" ColumnName="chitiet" />
+          <ScalarProperty Name="hinhanh1" ColumnName="hinhanh1" />
+          <ScalarProperty Name="hinhanh2" ColumnName="hinhanh2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loaiSPs">
+      <EntityTypeMapping TypeName="QLShopRuouModel.loaiSP">
+        <MappingFragment StoreEntitySet="loaiSP">
+          <ScalarProperty Name="maloaiSP" ColumnName="maloaiSP" />
+          <ScalarProperty Name="tenloaiSP" ColumnName="tenloaiSP" />
+          <ScalarProperty Name="maTT" ColumnName="maTT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nhasanxuats">
+      <EntityTypeMapping TypeName="QLShopRuouModel.nhasanxuat">
+        <MappingFragment StoreEntitySet="nhasanxuat">
+          <ScalarProperty Name="maNSX" ColumnName="maNSX" />
+          <ScalarProperty Name="tenNSX" ColumnName="tenNSX" />
+          <ScalarProperty Name="maTT" ColumnName="maTT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sanphams">
+      <EntityTypeMapping TypeName="QLShopRuouModel.sanpham">
+        <MappingFragment StoreEntitySet="sanpham">
+          <ScalarProperty Name="maSP" ColumnName="maSP" />
+          <ScalarProperty Name="maloaiSP" ColumnName="maloaiSP" />
+          <ScalarProperty Name="maNSX" ColumnName="maNSX" />
+          <ScalarProperty Name="maTT" ColumnName="maTT" />
+          <ScalarProperty Name="soluongton" ColumnName="soluongton" />
+          <ScalarProperty Name="soluongbanduoc" ColumnName="soluongbanduoc" />
+          <ScalarProperty Name="soluongxem" ColumnName="soluongxem" />
+          <ScalarProperty Name="ngaynhap" ColumnName="ngaynhap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tinhtrangs">
+      <EntityTypeMapping TypeName="QLShopRuouModel.tinhtrang">
+        <MappingFragment StoreEntitySet="tinhtrang">
+          <ScalarProperty Name="maTT" ColumnName="maTT" />
+          <ScalarProperty Name="tinhtrang1" ColumnName="tinhtrang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

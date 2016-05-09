@@ -129,14 +129,17 @@
     <Content Include="themes\bootstrap-3.3.6-dist\js\npm.js" />
     <Content Include="themes\css\base.css" />
     <Content Include="themes\css\login.css" />
+    <Content Include="themes\css\menu.css" />
     <Content Include="themes\font-awesome-4.5.0\css\font-awesome.css" />
     <Content Include="themes\font-awesome-4.5.0\css\font-awesome.min.css" />
     <Content Include="themes\font-awesome-4.5.0\fonts\fontawesome-webfont.svg" />
     <Content Include="themes\font-awesome-4.5.0\HELP-US-OUT.txt" />
     <Content Include="themes\images\banner\1.png" />
     <Content Include="themes\images\banner\2.png" />
+    <Content Include="themes\images\head.jpg" />
     <Content Include="themes\images\ico-cart.png" />
     <Content Include="themes\images\logo.png" />
+    <Content Include="themes\images\nav-bg.png" />
     <Content Include="themes\images\payment_methods.png" />
     <Content Include="themes\images\products\bauda.png" />
     <Content Include="themes\images\products\nepviet.png" />

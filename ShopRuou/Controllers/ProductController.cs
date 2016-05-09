@@ -78,6 +78,10 @@ namespace ShopRuou.Controllers
 
         public ActionResult chitietSP(int? id)
         {
+            if(id.HasValue == false)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             ViewBag.maSP = id;
             return View();
         }

@@ -4,5 +4,5 @@
 
 @foreach (nhasanxuat c in Model)
 {
-    <p><a href="@Url.Action("SanPhamNSX","Product",new{id = c.maNSX})"><i class="fa fa-angle-right"></i> @c.tenNSX </a></p>
+    <li><a href="@Url.Action("SanPhamNSX","Product",new{id = c.maNSX})">@c.tenNSX</a></li>
 }

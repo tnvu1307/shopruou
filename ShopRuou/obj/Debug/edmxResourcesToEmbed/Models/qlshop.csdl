@@ -164,5 +164,13 @@
       <End Role="tinhtrang" EntitySet="tinhtrangs" />
       <End Role="sanpham" EntitySet="sanphams" />
     </AssociationSet>
+    <EntitySet Name="hinhanhs" EntityType="QLShopRuouModel.hinhanh" />
   </EntityContainer>
+  <EntityType Name="hinhanh">
+    <Key>
+      <PropertyRef Name="ma" />
+    </Key>
+    <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="url" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

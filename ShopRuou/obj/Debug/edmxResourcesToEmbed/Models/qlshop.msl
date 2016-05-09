@@ -56,5 +56,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="hinhanhs">
+      <EntityTypeMapping TypeName="QLShopRuouModel.hinhanh">
+        <MappingFragment StoreEntitySet="hinhanh">
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="ma" ColumnName="ma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

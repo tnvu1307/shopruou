@@ -16,6 +16,7 @@
         <AssociationConnector Association="QLShopRuouModel.FK__sanpham__maNSX__2C3393D0" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopRuouModel.NSX_TT" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopRuouModel.FK__sanpham__maTT__2D27B809" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLShopRuouModel.hinhanh" Width="1.5" PointX="5.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

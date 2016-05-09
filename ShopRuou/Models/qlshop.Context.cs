@@ -30,5 +30,6 @@ namespace ShopRuou.Models
         public DbSet<nhasanxuat> nhasanxuats { get; set; }
         public DbSet<sanpham> sanphams { get; set; }
         public DbSet<tinhtrang> tinhtrangs { get; set; }
+        public DbSet<hinhanh> hinhanhs { get; set; }
     }
 }

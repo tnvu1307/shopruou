@@ -48,19 +48,40 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tinhtrangs">
-      <EntityTypeMapping TypeName="QLShopRuouModel.tinhtrang">
-        <MappingFragment StoreEntitySet="tinhtrang">
-          <ScalarProperty Name="maTT" ColumnName="maTT" />
-          <ScalarProperty Name="tinhtrang1" ColumnName="tinhtrang" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="hinhanhs">
       <EntityTypeMapping TypeName="QLShopRuouModel.hinhanh">
         <MappingFragment StoreEntitySet="hinhanh">
           <ScalarProperty Name="url" ColumnName="url" />
           <ScalarProperty Name="ma" ColumnName="ma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tinhtrangs">
+      <EntityTypeMapping TypeName="QLShopRuouModel.tinhtrang">
+        <MappingFragment StoreEntitySet="tinhtrang">
+          <ScalarProperty Name="tinhtrang1" ColumnName="tinhtrang" />
+          <ScalarProperty Name="maTT" ColumnName="maTT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loaiTKs">
+      <EntityTypeMapping TypeName="QLShopRuouModel.loaiTK">
+        <MappingFragment StoreEntitySet="loaiTK">
+          <ScalarProperty Name="tenLoai" ColumnName="tenLoai" />
+          <ScalarProperty Name="maLoai" ColumnName="maLoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="taikhoans">
+      <EntityTypeMapping TypeName="QLShopRuouModel.taikhoan">
+        <MappingFragment StoreEntitySet="taikhoan">
+          <ScalarProperty Name="ltk" ColumnName="ltk" />
+          <ScalarProperty Name="ngaySinh" ColumnName="ngaySinh" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="hoTen" ColumnName="hoTen" />
+          <ScalarProperty Name="matKhau" ColumnName="matKhau" />
+          <ScalarProperty Name="tk" ColumnName="tk" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

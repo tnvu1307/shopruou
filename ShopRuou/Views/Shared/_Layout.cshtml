@@ -1,67 +1,82 @@
-﻿
+﻿@using ShopRuou.Helpers
 <!DOCTYPE html>
 <head>
-    <meta charset="utf-8">
-    <title>Shop</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>@ViewBag.Title</title>
     <link href="~/themes/css/base.css" rel="stylesheet" />
-    <link href="~/themes/css/login.css" rel="stylesheet" />
     <link href="~/themes/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/themes/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/themes/js/google-code-prettify/prettify.css" rel="stylesheet" />
     <link href="~/themes/bootstrap-3.3.6-dist/css/bootstrap-responsive.min.css" rel="stylesheet" />
-    <link href="~/themes/css/menu.css" rel="stylesheet" />
+    <link href="~/themes/css/menu.css" rel="stylesheet" />    
     @RenderSection("css", false)
 </head>
-<body>
-    <div id="header" style="background-image: url('../../themes/images/head.jpg'); height:250px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">Welcome!<strong> User</strong></div>
-                <div class="col-lg-6">
-                    <strong>Call Us On: <span style="color:red;">0169xxxxxxx</span></strong>
+<body style="background: rgba(51, 91, 183, 0.11);">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div id="header" style="background-image: url(../../themes/images/head.jpg); height:200px; background-size: 100% 200px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            
+                            @if((int)Session["IsLogin"] == 1){
+                                ShopRuou.Models.taikhoan curuser = Session["CurUser"] as ShopRuou.Models.taikhoan;
+                                    <span style="color:#ffffff">Welcome<strong> <a href="@Url.Action("TTtaikhoan","TaiKhoan")" style="color:#ffffff;">@CurrentContext.CurUser().hoTen</a></strong></span>
+                                 }
+                         </div>
+                        <form id="logoutForm" method="post" action="@Url.Action("Logout","TaiKhoan")"></form>
+                        <div style="float:right; top:1000px">
+                            @if (CurrentContext.Islogged() == false)
+                            {
+                                <a href="@Url.Action("Login","TaiKhoan")" role="button" style="font-size:20px;">
+                                    Đăng Nhập<i class="fa fa-sign-in" aria-hidden="true"></i>                                   
+                                </a>
+                                <strong>&nbsp;&nbsp;&nbsp;</strong>
+                                <a href="@Url.Action("DangKy","TaiKhoan")" style="font-size:20px;">Đăng Ký<i class="fa fa-registered" aria-hidden="true"></i></a>
+                            }
+                            else
+                            {
+                                <a id="logoutLink" href="javascript: ;" role="button" style="font-size:20px;">
+                                    Thoát<i class="fa fa-sign-out" aria-hidden="true"></i>
+                                </a>
+                            }
+                        </div>
+                    </div>
                 </div>
-                <div class=""><a href="#login" role="button" data-toggle="modal" data-target="#login-modal" style="padding-right:0">Đăng nhập</a></div>
             </div>
+            <nav class="" style="margin-top:-10px;">
+                <div class="wrapper">
+                    <div class="main_menu">
+                        <ul>
+                            <li><a class="acolor" href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                            <li><a class="acolor" href="">Giới thiệu</a></li>
+                            <li>
+                                <a class="acolor" href="#">Sản phẩm</a>
+                                <ul class="dropdown-menu">
+                                    @Html.Action("partialloaiSP", "Category")
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="acolor" href="#">Nhà Sản Xuất</a>
+                                <ul class="dropdown-menu">
+                                    @Html.Action("partialnhaSX", "Category")
+                                </ul>
+                            </li>
+                            <li><a class="acolor" href="">Giỏ hàng @if(CurrentContext.Islogged() == true){<text>(0)</text>}</a></li>
+                            <li><a class="acolor" href="">Liên hệ</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </nav>
+            <div class="col-sm-1"></div>
         </div>
     </div>
-    <nav class="">
-        <div class="wrapper">
-            <div class="main_menu">
-                <ul>
-                    <li><a class="acolor" href="@Url.Action("Index","Home")">Trang chủ</a></li>
-                    <li><a class="acolor" href="">Giới thiệu</a></li>
-                    <li>
-                        <a class="acolor" href="#">Sản phẩm</a>
-                        <ul class="dropdown-menu">
-                            @Html.Action("partialloaiSP", "Category")
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="acolor" href="#">Nhà Sản Xuất</a>
-                        <ul class="dropdown-menu">
-                            @Html.Action("partialnhaSX", "Category")
-                        </ul>
-                    </li>
-                    <li><a class="acolor" href="">Giỏ hàng</a></li>
-                    <li><a class="acolor" href="">Liên hệ</a></li>
-                </ul>
-                <div class="clear"></div>
-            </div>
-        </div>
-    </nav>
     <div id="carouselBlk">
-        <div id="myCarousel" class="carousel slide">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="item active">
-                    <div class="container">
-                        <a href="@Url.Action("Index","Home")"><img src="~/themes/images/banner/1.jpg" alt="special offers" /></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="container">
-                        <a href="@Url.Action("Index","Home")"><img src="~/themes/images/banner/2.jpg" alt="" /></a>
-                    </div>
-                </div>
+                @Html.Action("PartialBanner", "hinhanh")
             </div>
             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -73,23 +88,6 @@
             </a>
         </div>
     </div>
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="loginmodal-container">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h1>Đăng nhập tài khoản</h1><br>
-                <form>
-                    <input type="text" name="user" placeholder="Tên đăng nhập">
-                    <input type="password" name="pass" placeholder="Mật khẩu">
-                    <input type="submit" name="login" class="login loginmodal-submit" value="Đăng nhập">
-                </form>
-
-                <div class="login-help">
-                    <a href="#">Đăng ký</a> - <a href="#">Quên mật khẩu</a>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Header End====================================================================== -->
 
     <div id="mainBody">
@@ -98,9 +96,7 @@
                 <!-- Sidebar ================================================== -->
                 <div id="sidebar" class="col-sm-1">
                 </div>
-                <div id="sidebar" class="col-sm-10">
                     @RenderBody()
-                </div>
                 <div id="sidebar" class="col-sm-1">
                 </div>
                 <!-- Sidebar end=============================================== -->
@@ -117,5 +113,11 @@
     <script src="~/themes/js/jquery-1.12.2.min.js"></script>
     <script src="~/themes/js/google-code-prettify/prettify.js"></script>
     <script src="~/themes/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $('#logoutLink').on('click', function () {
+            $('#logoutForm').submit();
+        });
+    </script>
+    @RenderSection("js", false)
 </body>
-</html>

@@ -37,6 +37,6 @@ C:\Users\Nguyên\Desktop\doanweb2\shopruou\ShopRuou\bin\System.Web.Razor.xml
 C:\Users\Nguyên\Desktop\doanweb2\shopruou\ShopRuou\bin\System.Web.WebPages.xml
 C:\Users\Nguyên\Desktop\doanweb2\shopruou\ShopRuou\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Nguyên\Desktop\doanweb2\shopruou\ShopRuou\bin\System.Web.WebPages.Razor.xml
-C:\Users\Nguyên\Desktop\doanweb2\shopruou\ShopRuou\obj\Debug\ShopRuou.csprojResolveAssemblyReference.cache
 C:\Users\Nguyên\Desktop\doanweb2\shopruou\ShopRuou\obj\Debug\ShopRuou.dll
 C:\Users\Nguyên\Desktop\doanweb2\shopruou\ShopRuou\obj\Debug\ShopRuou.pdb
+C:\Users\Nguyên\Desktop\doanweb2\shopruou\ShopRuou\obj\Debug\ShopRuou.csprojResolveAssemblyReference.cache

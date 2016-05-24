@@ -1,0 +1,23 @@
+﻿@using ShopRuou.Models
+
+@model List<hinhanh>
+@foreach(hinhanh c in Model)
+{
+   
+    if (c.url == "1.jpg")
+    {
+        <div class="item active">
+                    <div class="container">
+                        <a href="@Url.Action("Index","Home")"><img style="width:1050px; height:320px;" src="~/themes/images/banner/@c.url" alt="@c.url" /></a> 
+                    </div>                  
+                </div>
+    }
+    else
+    { 
+        <div class="item">
+            <div class="container">
+                <a href="@Url.Action("Index", "Home")"><img style="width:1050px; height:320px;" src="~/themes/images/banner/@c.url" alt="@c.url" /></a>
+            </div>
+        </div>
+    }
+}

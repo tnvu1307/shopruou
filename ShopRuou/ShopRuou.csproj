@@ -134,8 +134,12 @@
     <Content Include="themes\font-awesome-4.5.0\css\font-awesome.min.css" />
     <Content Include="themes\font-awesome-4.5.0\fonts\fontawesome-webfont.svg" />
     <Content Include="themes\font-awesome-4.5.0\HELP-US-OUT.txt" />
-    <Content Include="themes\images\banner\1.png" />
-    <Content Include="themes\images\banner\2.png" />
+    <Content Include="themes\images\banner\1.jpg" />
+    <Content Include="themes\images\banner\2.jpg" />
+    <Content Include="themes\images\banner\3.jpg" />
+    <Content Include="themes\images\banner\4.jpg" />
+    <Content Include="themes\images\banner\5.jpg" />
+    <Content Include="themes\images\banner\6.jpg" />
     <Content Include="themes\images\head.jpg" />
     <Content Include="themes\images\ico-cart.png" />
     <Content Include="themes\images\logo.png" />
@@ -147,7 +151,11 @@
     <Content Include="themes\js\google-code-prettify\prettify.css" />
     <Content Include="themes\js\google-code-prettify\prettify.js" />
     <Content Include="themes\js\jquery-1.12.2.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="themes\js\jquery.validate.js" />
+    <Content Include="themes\js\jquery.validate.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -155,14 +163,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\hinhanh.cs" />
     <Compile Include="Controllers\HinhAnhController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Filters\CheckLoginAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CurrentContext.cs" />
+    <Compile Include="Helpers\StringUtils.cs" />
     <Compile Include="Models\chitietSP.cs">
       <DependentUpon>qlshop.tt</DependentUpon>
     </Compile>
@@ -172,6 +184,10 @@
     <Compile Include="Models\loaiSP.cs">
       <DependentUpon>qlshop.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\loaiTK.cs">
+      <DependentUpon>qlshop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\nhasanxuat.cs">
       <DependentUpon>qlshop.tt</DependentUpon>
     </Compile>
@@ -190,7 +206,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>qlshop.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\sanpham.cs">
+      <DependentUpon>qlshop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\taikhoan.cs">
       <DependentUpon>qlshop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tinhtrang.cs">
@@ -246,6 +266,10 @@
     <Content Include="themes\font-awesome-4.5.0\scss\_stacked.scss" />
     <Content Include="themes\font-awesome-4.5.0\scss\_variables.scss" />
     <Content Include="Views\Product\chitietSP.cshtml" />
+    <Content Include="Views\HinhAnh\PartialBanner.cshtml" />
+    <Content Include="Views\TaiKhoan\Login.cshtml" />
+    <Content Include="Views\TaiKhoan\TTtaikhoan.cshtml" />
+    <Content Include="Views\TaiKhoan\DangKy.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -255,7 +279,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\HinhAnh\" />
+    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

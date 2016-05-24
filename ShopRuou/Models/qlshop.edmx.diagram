@@ -4,19 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9daa4678a62a4ba1a2ecedfbdfe20575" Name="Diagram1">
+      <Diagram DiagramId="9daa4678a62a4ba1a2ecedfbdfe20575" Name="Diagram1" ZoomLevel="73">
         <EntityTypeShape EntityType="QLShopRuouModel.chitietSP" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="QLShopRuouModel.loaiSP" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLShopRuouModel.nhasanxuat" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLShopRuouModel.sanpham" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLShopRuouModel.tinhtrang" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
         <AssociationConnector Association="QLShopRuouModel.FK__chitietSP__hinha__31EC6D26" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopRuouModel.FK__sanpham__ngaynha__2B3F6F97" ManuallyRouted="false" />
-        <AssociationConnector Association="QLShopRuouModel.LSP_TT" ManuallyRouted="false" />
         <AssociationConnector Association="QLShopRuouModel.FK__sanpham__maNSX__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="QLShopRuouModel.NSX_TT" ManuallyRouted="false" />
-        <AssociationConnector Association="QLShopRuouModel.FK__sanpham__maTT__2D27B809" ManuallyRouted="false" />
         <EntityTypeShape EntityType="QLShopRuouModel.hinhanh" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="QLShopRuouModel.tinhtrang" Width="1.5" PointX="0.75" PointY="3.125" />
+        <AssociationConnector Association="QLShopRuouModel.LSP_TT" />
+        <AssociationConnector Association="QLShopRuouModel.NSX_TT" />
+        <AssociationConnector Association="QLShopRuouModel.FK__sanpham__maTT__145C0A3F" />
+        <EntityTypeShape EntityType="QLShopRuouModel.loaiTK" Width="1.5" PointX="7.375" PointY="7.375" />
+        <EntityTypeShape EntityType="QLShopRuouModel.taikhoan" Width="1.5" PointX="9.625" PointY="6.875" />
+        <AssociationConnector Association="QLShopRuouModel.FK__taikhoan__ltk__32E0915F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

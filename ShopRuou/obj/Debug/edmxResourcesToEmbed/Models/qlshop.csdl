@@ -23,7 +23,7 @@
     <Property Name="tenloaiSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="maTT" Type="Int32" />
     <NavigationProperty Name="sanphams" Relationship="Self.FK__sanpham__ngaynha__2B3F6F97" FromRole="loaiSP" ToRole="sanpham" />
-    <NavigationProperty Name="tinhtrang" Relationship="Self.LSP_TT" FromRole="loaiSP" ToRole="tinhtrang" />
+    <NavigationProperty Name="tinhtrang" Relationship="QLShopRuouModel.LSP_TT" FromRole="loaiSP" ToRole="tinhtrang" />
   </EntityType>
   <EntityType Name="nhasanxuat">
     <Key>
@@ -33,7 +33,7 @@
     <Property Name="tenNSX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="maTT" Type="Int32" />
     <NavigationProperty Name="sanphams" Relationship="Self.FK__sanpham__maNSX__2C3393D0" FromRole="nhasanxuat" ToRole="sanpham" />
-    <NavigationProperty Name="tinhtrang" Relationship="Self.NSX_TT" FromRole="nhasanxuat" ToRole="tinhtrang" />
+    <NavigationProperty Name="tinhtrang" Relationship="QLShopRuouModel.NSX_TT" FromRole="nhasanxuat" ToRole="tinhtrang" />
   </EntityType>
   <EntityType Name="sanpham">
     <Key>
@@ -50,17 +50,7 @@
     <NavigationProperty Name="chitietSP" Relationship="Self.FK__chitietSP__hinha__31EC6D26" FromRole="sanpham" ToRole="chitietSP" />
     <NavigationProperty Name="loaiSP" Relationship="Self.FK__sanpham__ngaynha__2B3F6F97" FromRole="sanpham" ToRole="loaiSP" />
     <NavigationProperty Name="nhasanxuat" Relationship="Self.FK__sanpham__maNSX__2C3393D0" FromRole="sanpham" ToRole="nhasanxuat" />
-    <NavigationProperty Name="tinhtrang" Relationship="Self.FK__sanpham__maTT__2D27B809" FromRole="sanpham" ToRole="tinhtrang" />
-  </EntityType>
-  <EntityType Name="tinhtrang">
-    <Key>
-      <PropertyRef Name="maTT" />
-    </Key>
-    <Property Name="maTT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="tinhtrang1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="loaiSPs" Relationship="Self.LSP_TT" FromRole="tinhtrang" ToRole="loaiSP" />
-    <NavigationProperty Name="nhasanxuats" Relationship="Self.NSX_TT" FromRole="tinhtrang" ToRole="nhasanxuat" />
-    <NavigationProperty Name="sanphams" Relationship="Self.FK__sanpham__maTT__2D27B809" FromRole="tinhtrang" ToRole="sanpham" />
+    <NavigationProperty Name="tinhtrang" Relationship="QLShopRuouModel.FK__sanpham__maTT__145C0A3F" FromRole="sanpham" ToRole="tinhtrang" />
   </EntityType>
   <Association Name="FK__chitietSP__hinha__31EC6D26">
     <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
@@ -86,18 +76,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="LSP_TT">
-    <End Role="tinhtrang" Type="Self.tinhtrang" Multiplicity="0..1" />
-    <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tinhtrang">
-        <PropertyRef Name="maTT" />
-      </Principal>
-      <Dependent Role="loaiSP">
-        <PropertyRef Name="maTT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__sanpham__maNSX__2C3393D0">
     <End Role="nhasanxuat" Type="Self.nhasanxuat" Multiplicity="1" />
     <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
@@ -110,9 +88,76 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityContainer Name="QLShopRuouEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="chitietSPs" EntityType="Self.chitietSP" />
+    <EntitySet Name="loaiSPs" EntityType="Self.loaiSP" />
+    <EntitySet Name="nhasanxuats" EntityType="Self.nhasanxuat" />
+    <EntitySet Name="sanphams" EntityType="Self.sanpham" />
+    <AssociationSet Name="FK__chitietSP__hinha__31EC6D26" Association="Self.FK__chitietSP__hinha__31EC6D26">
+      <End Role="sanpham" EntitySet="sanphams" />
+      <End Role="chitietSP" EntitySet="chitietSPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sanpham__ngaynha__2B3F6F97" Association="Self.FK__sanpham__ngaynha__2B3F6F97">
+      <End Role="loaiSP" EntitySet="loaiSPs" />
+      <End Role="sanpham" EntitySet="sanphams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sanpham__maNSX__2C3393D0" Association="Self.FK__sanpham__maNSX__2C3393D0">
+      <End Role="nhasanxuat" EntitySet="nhasanxuats" />
+      <End Role="sanpham" EntitySet="sanphams" />
+    </AssociationSet>
+    <EntitySet Name="hinhanhs" EntityType="QLShopRuouModel.hinhanh" />
+    <EntitySet Name="tinhtrangs" EntityType="QLShopRuouModel.tinhtrang" />
+    <AssociationSet Name="LSP_TT" Association="QLShopRuouModel.LSP_TT">
+      <End Role="tinhtrang" EntitySet="tinhtrangs" />
+      <End Role="loaiSP" EntitySet="loaiSPs" />
+    </AssociationSet>
+    <AssociationSet Name="NSX_TT" Association="QLShopRuouModel.NSX_TT">
+      <End Role="tinhtrang" EntitySet="tinhtrangs" />
+      <End Role="nhasanxuat" EntitySet="nhasanxuats" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sanpham__maTT__145C0A3F" Association="QLShopRuouModel.FK__sanpham__maTT__145C0A3F">
+      <End Role="tinhtrang" EntitySet="tinhtrangs" />
+      <End Role="sanpham" EntitySet="sanphams" />
+    </AssociationSet>
+    <EntitySet Name="loaiTKs" EntityType="QLShopRuouModel.loaiTK" />
+    <EntitySet Name="taikhoans" EntityType="QLShopRuouModel.taikhoan" />
+    <AssociationSet Name="FK__taikhoan__ltk__32E0915F" Association="QLShopRuouModel.FK__taikhoan__ltk__32E0915F">
+      <End Role="loaiTK" EntitySet="loaiTKs" />
+      <End Role="taikhoan" EntitySet="taikhoans" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="hinhanh">
+    <Key>
+      <PropertyRef Name="ma" />
+    </Key>
+    <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tinhtrang">
+    <Key>
+      <PropertyRef Name="maTT" />
+    </Key>
+    <Property Name="maTT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tinhtrang1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="loaiSPs" Relationship="QLShopRuouModel.LSP_TT" FromRole="tinhtrang" ToRole="loaiSP" />
+    <NavigationProperty Name="nhasanxuats" Relationship="QLShopRuouModel.NSX_TT" FromRole="tinhtrang" ToRole="nhasanxuat" />
+    <NavigationProperty Name="sanphams" Relationship="QLShopRuouModel.FK__sanpham__maTT__145C0A3F" FromRole="tinhtrang" ToRole="sanpham" />
+  </EntityType>
+  <Association Name="LSP_TT">
+    <End Type="QLShopRuouModel.tinhtrang" Role="tinhtrang" Multiplicity="0..1" />
+    <End Type="QLShopRuouModel.loaiSP" Role="loaiSP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tinhtrang">
+        <PropertyRef Name="maTT" />
+      </Principal>
+      <Dependent Role="loaiSP">
+        <PropertyRef Name="maTT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="NSX_TT">
-    <End Role="tinhtrang" Type="Self.tinhtrang" Multiplicity="0..1" />
-    <End Role="nhasanxuat" Type="Self.nhasanxuat" Multiplicity="*" />
+    <End Type="QLShopRuouModel.tinhtrang" Role="tinhtrang" Multiplicity="0..1" />
+    <End Type="QLShopRuouModel.nhasanxuat" Role="nhasanxuat" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tinhtrang">
         <PropertyRef Name="maTT" />
@@ -122,9 +167,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__sanpham__maTT__2D27B809">
-    <End Role="tinhtrang" Type="Self.tinhtrang" Multiplicity="1" />
-    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+  <Association Name="FK__sanpham__maTT__145C0A3F">
+    <End Type="QLShopRuouModel.tinhtrang" Role="tinhtrang" Multiplicity="1" />
+    <End Type="QLShopRuouModel.sanpham" Role="sanpham" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tinhtrang">
         <PropertyRef Name="maTT" />
@@ -134,43 +179,37 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QLShopRuouEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="chitietSPs" EntityType="Self.chitietSP" />
-    <EntitySet Name="loaiSPs" EntityType="Self.loaiSP" />
-    <EntitySet Name="nhasanxuats" EntityType="Self.nhasanxuat" />
-    <EntitySet Name="sanphams" EntityType="Self.sanpham" />
-    <EntitySet Name="tinhtrangs" EntityType="Self.tinhtrang" />
-    <AssociationSet Name="FK__chitietSP__hinha__31EC6D26" Association="Self.FK__chitietSP__hinha__31EC6D26">
-      <End Role="sanpham" EntitySet="sanphams" />
-      <End Role="chitietSP" EntitySet="chitietSPs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__sanpham__ngaynha__2B3F6F97" Association="Self.FK__sanpham__ngaynha__2B3F6F97">
-      <End Role="loaiSP" EntitySet="loaiSPs" />
-      <End Role="sanpham" EntitySet="sanphams" />
-    </AssociationSet>
-    <AssociationSet Name="LSP_TT" Association="Self.LSP_TT">
-      <End Role="tinhtrang" EntitySet="tinhtrangs" />
-      <End Role="loaiSP" EntitySet="loaiSPs" />
-    </AssociationSet>
-    <AssociationSet Name="FK__sanpham__maNSX__2C3393D0" Association="Self.FK__sanpham__maNSX__2C3393D0">
-      <End Role="nhasanxuat" EntitySet="nhasanxuats" />
-      <End Role="sanpham" EntitySet="sanphams" />
-    </AssociationSet>
-    <AssociationSet Name="NSX_TT" Association="Self.NSX_TT">
-      <End Role="tinhtrang" EntitySet="tinhtrangs" />
-      <End Role="nhasanxuat" EntitySet="nhasanxuats" />
-    </AssociationSet>
-    <AssociationSet Name="FK__sanpham__maTT__2D27B809" Association="Self.FK__sanpham__maTT__2D27B809">
-      <End Role="tinhtrang" EntitySet="tinhtrangs" />
-      <End Role="sanpham" EntitySet="sanphams" />
-    </AssociationSet>
-    <EntitySet Name="hinhanhs" EntityType="QLShopRuouModel.hinhanh" />
-  </EntityContainer>
-  <EntityType Name="hinhanh">
+  <EntityType Name="loaiTK">
     <Key>
-      <PropertyRef Name="ma" />
+      <PropertyRef Name="maLoai" />
     </Key>
-    <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="url" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="maLoai" Type="Int32" Nullable="false" />
+    <Property Name="tenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="taikhoans" Relationship="QLShopRuouModel.FK__taikhoan__ltk__32E0915F" FromRole="loaiTK" ToRole="taikhoan" />
   </EntityType>
+  <EntityType Name="taikhoan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tk" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="matKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="hoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="ngaySinh" Type="DateTime" Precision="0" />
+    <Property Name="ltk" Type="Int32" />
+    <NavigationProperty Name="loaiTK" Relationship="QLShopRuouModel.FK__taikhoan__ltk__32E0915F" FromRole="taikhoan" ToRole="loaiTK" />
+  </EntityType>
+  <Association Name="FK__taikhoan__ltk__32E0915F">
+    <End Type="QLShopRuouModel.loaiTK" Role="loaiTK" Multiplicity="0..1" />
+    <End Type="QLShopRuouModel.taikhoan" Role="taikhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loaiTK">
+        <PropertyRef Name="maLoai" />
+      </Principal>
+      <Dependent Role="taikhoan">
+        <PropertyRef Name="ltk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

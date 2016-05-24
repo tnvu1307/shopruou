@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Đăng Ký";
+}
+
+@section css{
+    <link href="~/themes/css/login.css" rel="stylesheet" />
+}
+
+@section js{   
+<script src="~/themes/js/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        $('#dangky-form').validate({
+            rules: {
+                UID: {
+                    required: true,
+                    minlength: 8
+                },
+                PWD: {
+                    required: true,
+                    minlength: 8
+                },
+                PWD2: {
+                    equalTo: "#PWD"
+                },
+                Fullname: 'required',
+                Email: {
+                    required: true,
+                    email: true,
+                },
+                Birthday: 'required',
+            },
+            messages: {
+                UID: {
+                    required: 'Chưa nhập mật khẩu',
+                    minlength: 'Tài khoản quá ngắn, lớn hơn 8 kí tự'
+                },
+                PWD: {
+                    required: 'Chưa nhập mật khẩu',
+                    minlength: 'mật khẩu phải lớn hơn 8 kí tự'
+                },
+                PWD2: {
+                    equalTo:'Mật khẩu không trùng'
+                },
+                Fullname: 'Chưa nhập họ tên',
+                Email: {
+                    required: 'Chưa nhập email',
+                    email: 'Chưa đúng định dạng email'
+                },
+                Birthday: 'Chưa nhập ngày sinh',
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+        });
+    </script>
+
+}
+
+
+<div class="login1" style="height:750px;">
+    <div class="login2">
+        <h1>Đăng ký tài khoản</h1>
+        <form class="loginf" method="post" id="dangky-form" style="text-align:center;">
+            <table>
+                <tr>
+                    <td class="thongtin">Tên tài khoản&nbsp;</td>
+                    <td><input type="text" class="form-control" placeholder="Tên tài khoản" name="UID" required maxlength="15"></td>
+                </tr>
+                <tr>
+                    <td class="thongtin">Mật khẩu&nbsp;</td>
+                    <td><input type="password" class="form-control" placeholder="Mật khẩu" id="PWD" name="PWD" required maxlength="30"></td>
+                </tr>
+                <tr>
+                    <td class="thongtin">Nhập lại mật khẩu&nbsp;</td>
+                    <td><input type="password" class="form-control" placeholder="Nhập lại mật khẩu" name="PWD2"></td>
+                </tr>
+                <tr>
+                    <td class="thongtin">Họ tên&nbsp;</td>
+                    <td><input type="text" class="form-control" placeholder="Họ tên" name="Fullname"></td>
+                </tr>
+                <tr>
+                    <td class="thongtin">Email&nbsp;</td>
+                    <td><input type="email" class="form-control" placeholder="Email" name="Email"></td>
+                </tr>
+                <tr>
+                    <td class="thongtin">Ngày sinh&nbsp;</td>
+                    <td><input type="date" class="form-control" placeholder="Ngày sinh" name="Birthday"></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><button type="submit" id="login-button">Đăng Ký</button></td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+    <ul class="login3">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+

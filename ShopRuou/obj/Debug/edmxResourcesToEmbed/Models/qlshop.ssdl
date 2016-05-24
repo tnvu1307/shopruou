@@ -19,7 +19,7 @@
       <PropertyRef Name="ma" />
     </Key>
     <Property Name="ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="url" Type="nvarchar" MaxLength="1000" />
+    <Property Name="url" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="loaiSP">
     <Key>
@@ -28,6 +28,13 @@
     <Property Name="maloaiSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tenloaiSP" Type="nvarchar" MaxLength="50" />
     <Property Name="maTT" Type="int" />
+  </EntityType>
+  <EntityType Name="loaiTK">
+    <Key>
+      <PropertyRef Name="maLoai" />
+    </Key>
+    <Property Name="maLoai" Type="int" Nullable="false" />
+    <Property Name="tenLoai" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="nhasanxuat">
     <Key>
@@ -49,6 +56,18 @@
     <Property Name="soluongbanduoc" Type="int" Nullable="false" />
     <Property Name="soluongxem" Type="int" Nullable="false" />
     <Property Name="ngaynhap" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="taikhoan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tk" Type="varchar" MaxLength="15" />
+    <Property Name="matKhau" Type="varchar" MaxLength="255" />
+    <Property Name="hoTen" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="char" MaxLength="50" />
+    <Property Name="ngaySinh" Type="date" />
+    <Property Name="ltk" Type="int" />
   </EntityType>
   <EntityType Name="tinhtrang">
     <Key>
@@ -105,6 +124,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__taikhoan__ltk__32E0915F">
+    <End Role="loaiTK" Type="Self.loaiTK" Multiplicity="0..1" />
+    <End Role="taikhoan" Type="Self.taikhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loaiTK">
+        <PropertyRef Name="maLoai" />
+      </Principal>
+      <Dependent Role="taikhoan">
+        <PropertyRef Name="ltk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="LSP_TT">
     <End Role="tinhtrang" Type="Self.tinhtrang" Multiplicity="0..1" />
     <End Role="loaiSP" Type="Self.loaiSP" Multiplicity="*" />
@@ -133,8 +164,10 @@
     <EntitySet Name="chitietSP" EntityType="Self.chitietSP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="hinhanh" EntityType="Self.hinhanh" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="loaiSP" EntityType="Self.loaiSP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loaiTK" EntityType="Self.loaiTK" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="nhasanxuat" EntityType="Self.nhasanxuat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sanpham" EntityType="Self.sanpham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="taikhoan" EntityType="Self.taikhoan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tinhtrang" EntityType="Self.tinhtrang" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__chitietSP__maSP__108B795B" Association="Self.FK__chitietSP__maSP__108B795B">
       <End Role="sanpham" EntitySet="sanpham" />
@@ -151,6 +184,10 @@
     <AssociationSet Name="FK__sanpham__maTT__145C0A3F" Association="Self.FK__sanpham__maTT__145C0A3F">
       <End Role="tinhtrang" EntitySet="tinhtrang" />
       <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK__taikhoan__ltk__32E0915F" Association="Self.FK__taikhoan__ltk__32E0915F">
+      <End Role="loaiTK" EntitySet="loaiTK" />
+      <End Role="taikhoan" EntitySet="taikhoan" />
     </AssociationSet>
     <AssociationSet Name="LSP_TT" Association="Self.LSP_TT">
       <End Role="tinhtrang" EntitySet="tinhtrang" />

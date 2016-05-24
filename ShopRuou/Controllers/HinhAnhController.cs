@@ -15,14 +15,12 @@ namespace ShopRuou.Controllers
             return View();
         }
 
-        public ActionResult banner()
+        public ActionResult PartialBanner()
         {
-            using (var ctx = new QLShopRuouEntities())
+            using (var c = new QLShopRuouEntities())
             {
-                List<hinhanh> list;
-                var a= ctx.hinhanhs.ToList();
-                list = a;
-                return View(list);
+                List<hinhanh> list = c.hinhanhs.ToList();
+                return PartialView(list);
             }
         }
 	}

@@ -29,7 +29,9 @@ namespace ShopRuou.Models
         public DbSet<loaiSP> loaiSPs { get; set; }
         public DbSet<nhasanxuat> nhasanxuats { get; set; }
         public DbSet<sanpham> sanphams { get; set; }
-        public DbSet<tinhtrang> tinhtrangs { get; set; }
         public DbSet<hinhanh> hinhanhs { get; set; }
+        public DbSet<tinhtrang> tinhtrangs { get; set; }
+        public DbSet<loaiTK> loaiTKs { get; set; }
+        public DbSet<taikhoan> taikhoans { get; set; }
     }
 }

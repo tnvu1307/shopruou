@@ -1,0 +1,63 @@
+﻿@model ShopRuou.Models.Login
+
+@{
+    ViewBag.Title = "Đăng Nhập";
+}
+@section css{
+    <link href="~/themes/css/login.css" rel="stylesheet" />
+}
+
+@section js{
+
+    
+<script src="~/themes/js/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        $('#login-form').validate({
+            rules: {
+                user: 'required',
+                pass: 'required',
+            },
+            messages: {
+                user: 'Chưa nhập tài khoản',
+                pass: 'Chưa nhập mật khẩu',
+            },
+            errorElement: 'span',
+            errorClass: 'help-block',
+
+            highlight: function (element) {
+                $(element).closest("form-group").addClass('has-error');
+            }
+        });
+    </script>
+}
+
+<div class="login1" style="height:500px;">
+    <div class="login2">
+        <h1>Chào Mừng Bạn</h1>
+        <span style="color:#ff0000;">
+            <b>@ViewBag.error</b>
+        </span>
+        <div class="form-group">
+            <form class="loginf" method="post" id="login-form">
+                <input type="text" placeholder="Tài Khoản" name="user" value="@if(Model!=null) {<text>@Model.user</text>}">
+                <input type="password" placeholder="Mật Khẩu" name="pass">
+                <div>
+                    <label><input data-val="true" data-val-required="The remember field is required." id="remember" name="remember" type="checkbox" value="true" style="width:20px;height:20px;"> Ghi Nhớ </label>
+                </div>
+                <button type="submit" id="login-button">Đăng Nhập</button>
+            </form>
+        </div>
+    </div>
+    <ul class="login3">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
